@@ -1,3 +1,2 @@
-default[:branch] = "release"
-default[:user] = "user"
-default[:version] = "latest"
+default[:roswell][:branch] = "release"
+default[:roswell][:version] = "latest"
