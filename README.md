@@ -1,42 +1,13 @@
-# chef-roswell-cookbook
+# chef-roswell
 
-TODO: Enter the cookbook description here.
+- Chef cookbook for [Roswell](https://github.com/snmsts/roswell)
+- Roswell is the project of installing Common Lisp and setting up everything just work is still difficult and you have to learn some tips.
+- Chef-roswell install ros itself, setup roswell, and install SBCL of the specific version.
 
-## Supported Platforms
+## Attribues
+- branch(default: "release"): Branch of Roswell.
+- user(default: "user"): User to install SBCL
+- version(default: "latest"): Version of SBCL
 
-TODO: List your supported platforms.
-
-## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['chef-roswell']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
-
-## Usage
-
-### chef-roswell::default
-
-Include `chef-roswell` in your node's `run_list`:
-
-```json
-{
-  "run_list": [
-    "recipe[chef-roswell::default]"
-  ]
-}
-```
-
-## License and Authors
-
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+## License
+MIT
