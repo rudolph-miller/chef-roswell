@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'berkshelf'
+
 group :development do
-  gem 'berkshelf'
   gem "test-kitchen"
-  gem "kitchen-vagrant"
   gem "serverspec"
+  gem "kitchen-docker"
 end

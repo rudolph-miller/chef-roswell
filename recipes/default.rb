@@ -1,34 +1,32 @@
+include_recipe "build-essential"
 include_recipe "curl::libcurl"
+include_recipe "package-tar"
+include_recipe "package-bzip2"
 include_recipe "autoconf"
 include_recipe "automake"
 
 roswell = node[:roswell]
-branch = roswell[:branch]
-version = roswell[:version]
 
-remote_file "/tmp/roswell-#{branch}.tar.gz" do
-  source "https://github.com/snmsts/roswell/archive/#{branch}.tar.gz"
+tar_extract "https://github.com/snmsts/roswell/archive/#{ roswell[:branch] }.tar.gz" do
+  target_dir "/tmp"
+  creates "/tmp/roswell-#{ roswell[:branch] }"
   notifies :run, "bash[install-roswell]", :immediately
 end
 
 bash "install-roswell" do
-  cwd "/tmp"
+  cwd "/tmp/roswell-#{ roswell[:branch] }"
+  user roswell[:user]
   code <<-EOS
-    tar zxvf roswell-#{branch}.tar.gz
-    cd roswell-#{branch}
     PATH=/usr/local/bin:$PATH sh ./bootstrap
-    ./configure
+    ./configure --prefix #{ roswell[:prefix] }
     make
     sudo make install
+    #{ roswell[:prefix] }/bin/ros setup
   EOS
-  notifies :run, "bash[setup-roswell]", :immediately
-end
-
-bash "setup-roswell" do
-  code %(ros setup)
   notifies :run, "bash[install-sbcl]", :immediately
 end
 
 bash "install-sbcl" do
-  code %(ros install sbcl/#{version})
+  code %(#{ roswell[:prefix] }/bin/ros install #{ roswell[:version] })
+  not_if{ roswell[:version].nil? or roswell[:version].empty? }
 end

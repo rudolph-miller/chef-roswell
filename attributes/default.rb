@@ -1,2 +1,6 @@
-default[:roswell][:branch] = "release"
-default[:roswell][:version] = "latest"
+default[:roswell] = {
+  branch: "release",
+  user: nil,
+  prefix: "/usr/local",
+  version: nil
+}

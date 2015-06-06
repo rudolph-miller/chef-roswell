@@ -1,4 +1,5 @@
 # chef-roswell
+[![Build Status](https://circleci.com/gh/Rudolph-Miller/chef-roswell.svg?style=shield)](https://circleci.com/Rudolph-Miller/chef-roswell)
 
 - Chef cookbook for [Roswell](https://github.com/snmsts/roswell)
 - [Roswell](https://github.com/snmsts/roswell) is the project of installing Common Lisp and setting up everything just work is still difficult and you have to learn some tips.
@@ -6,8 +7,9 @@
 
 ## Attribues
 - branch(default: "release"): Branch of Roswell.
-- user(default: "user"): User to install SBCL
-- version(default: "latest"): Version of SBCL
+- user(default: nil): User to install Roswell
+- prefix(default: "/usr/local"): Prefix for ./configure
+- version(default: nil): Version of SBCL
 
 ## Author of Roswell
 SANO Masatoshi (snmsts@gmail.com)
