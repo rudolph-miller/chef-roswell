@@ -9,7 +9,3 @@ end
 describe command("/usr/local/bin/ros list installed sbcl-bin") do
   its (:stdout) { should match /sbcl-bin/ }
 end
-
-describe command("/usr/local/bin/ros list installed sbcl") do
-  its (:stdout) { should match /sbcl/ }
-end

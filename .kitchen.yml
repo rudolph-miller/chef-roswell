@@ -17,4 +17,3 @@ suites:
     attributes:
       roswell:
         user: "kitchen"
-        version: "sbcl"
