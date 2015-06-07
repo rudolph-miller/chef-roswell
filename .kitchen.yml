@@ -14,6 +14,27 @@ suites:
   - name: default
     run_list:
       - recipe[roswell]
+  - name: branch
+    run_list:
+      - recipe[roswell]
+    attributes:
+      roswell:
+        branch: "master"
+  - name: user
+    run_list:
+      - recipe[roswell]
     attributes:
       roswell:
         user: "kitchen"
+  - name: prefix
+    run_list:
+      - recipe[roswell]
+    attributes:
+      roswell:
+        prefix: "/opt/local"
+  - name: version
+    run_list:
+      - recipe[roswell]
+    attributes:
+      roswell:
+        version: "sbcl"

@@ -6,15 +6,17 @@ include_recipe "autoconf"
 include_recipe "automake"
 
 roswell = node[:roswell]
+src_dir = "#{ roswell[:prefix] }/src"
+roswell_dir = "#{ src_dir }/roswell-#{ roswell[:branch] }"
 
 tar_extract "https://github.com/snmsts/roswell/archive/#{ roswell[:branch] }.tar.gz" do
-  target_dir "/tmp"
-  creates "/tmp/roswell-#{ roswell[:branch] }"
+  target_dir src_dir
+  creates roswell_dir
   notifies :run, "bash[install-roswell]", :immediately
 end
 
 bash "install-roswell" do
-  cwd "/tmp/roswell-#{ roswell[:branch] }"
+  cwd roswell_dir
   user roswell[:user]
   code <<-EOS
     PATH=/usr/local/bin:$PATH sh ./bootstrap
