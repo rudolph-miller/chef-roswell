@@ -4,6 +4,7 @@ include_recipe "package-tar"
 include_recipe "package-bzip2"
 include_recipe "autoconf"
 include_recipe "automake"
+include_recipe "zlib"
 
 roswell = node[:roswell]
 src_dir = "#{ roswell[:prefix] }/src"
