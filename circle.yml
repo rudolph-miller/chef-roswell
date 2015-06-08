@@ -4,4 +4,4 @@ machine:
 
 test:
   override:
-    - bundle exec kitchen verify -c2
+    - bundle exec kitchen verify -c5
