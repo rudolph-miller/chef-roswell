@@ -9,6 +9,11 @@ roswell = node[:roswell]
 src_dir = "#{ roswell[:prefix] }/src"
 roswell_dir = "#{ src_dir }/roswell-#{ roswell[:branch] }"
 
+directory src_dir do
+  action :create
+  recursive true
+end
+
 tar_extract "https://github.com/snmsts/roswell/archive/#{ roswell[:branch] }.tar.gz" do
   target_dir src_dir
   creates roswell_dir

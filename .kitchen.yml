@@ -32,9 +32,9 @@ suites:
     attributes:
       roswell:
         prefix: "/opt/local"
-  - name: version
-    run_list:
-      - recipe[roswell]
-    attributes:
-      roswell:
-        version: "sbcl"
+#  - name: version
+#    run_list:
+#      - recipe[roswell]
+#    attributes:
+#      roswell:
+#        version: "sbcl"
