@@ -1,5 +1,5 @@
 # chef-roswell
-[![Build Status](https://circleci.com/gh/Rudolph-Miller/chef-roswell.svg?style=shield)](https://circleci.com/Rudolph-Miller/chef-roswell)
+[![Build Status](https://circleci.com/gh/Rudolph-Miller/chef-roswell.svg?style=shield)](https://circleci.com/gh/Rudolph-Miller/chef-roswell)
 
 - Chef cookbook for [Roswell](https://github.com/snmsts/roswell)
 - [Roswell](https://github.com/snmsts/roswell) is the project of installing Common Lisp and setting up everything just work is still difficult and you have to learn some tips.
