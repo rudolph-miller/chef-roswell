@@ -9,10 +9,16 @@ include_recipe "zlib"
 roswell = node[:roswell]
 src_dir = "#{ roswell[:prefix] }/src"
 roswell_dir = "#{ src_dir }/roswell-#{ roswell[:branch] }"
+dot_roswell_dir = "#{ roswell[:user] ? Dir.home(roswell[:user]) : Dir.home(node[:current_user]) }/.roswell"
+init_lisp_path = dot_roswell_dir + "/init.lisp" 
 
 directory src_dir do
   action :create
   recursive true
+end
+
+directory dot_roswell_dir do
+  action :create
 end
 
 tar_extract "https://github.com/snmsts/roswell/archive/#{ roswell[:branch] }.tar.gz" do
@@ -43,4 +49,11 @@ template "/etc/profile.d/roswell.sh" do
   owner roswell[:user]
   group roswell[:user]
   mode 0644
+end
+
+template init_lisp_path do
+  owner roswell[:user]
+  group roswell[:user]
+  mode 0644
+  not_if { Dir.exists?(dot_roswell_dir) and File.exists?(init_lisp_path) }
 end

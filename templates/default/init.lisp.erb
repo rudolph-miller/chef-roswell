@@ -1,0 +1,6 @@
+(ros:ignore-shebang)
+
+#+sbcl
+(setf sb-impl::*default-external-format* :utf-8)
+#+ccl
+(setf ccl:*default-external-format* (ccl:make-external-format :character-encoding :utf-8 :line-termination :unix))
