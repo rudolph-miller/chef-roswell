@@ -38,3 +38,9 @@ bash "install-sbcl" do
   code %(#{ roswell[:prefix] }/bin/ros install #{ roswell[:version] })
   not_if{ roswell[:version].nil? or roswell[:version].empty? }
 end
+
+template "/etc/profile.d/roswell.sh" do
+  owner roswell[:user]
+  group roswell[:user]
+  mode 0644
+end
