@@ -41,6 +41,7 @@ bash "install-roswell" do
 end
 
 bash "install-sbcl" do
+  user roswell[:user]
   code %(#{ roswell[:prefix] }/bin/ros install #{ roswell[:version] })
   not_if{ roswell[:version].nil? or roswell[:version].empty? }
 end
